@@ -3,6 +3,13 @@ import { Router } from '@angular/router';
 import { FlexModalService } from '../shared-components/flex-modal/flex-modal.service';
 import { Http } from '@angular/http';
 
+interface IOrder {
+  pid: string;
+  image: string;
+  description: string;
+  quantity: number;
+  price: number;
+}
 @Component({
   selector: 'app-orders',
   templateUrl: './orders.component.html',
@@ -11,7 +18,7 @@ import { Http } from '@angular/http';
 
 export class OrdersComponent implements OnInit {
 
-  orders: Array<any> = [];
+  orders: Array<IOrder> = [];
   name = '';
   errorMessage = '';
   confirmMessage = '';
@@ -150,5 +157,35 @@ export class OrdersComponent implements OnInit {
       });
     }
 
+  }
+
+  clear() {
+    this.orders = [];
+    // this.orders.forEach((item, i) => {
+    //   console.log('item: ', item, 'i: ', i);
+    //   item.price = '';
+    //   item.quantity = '';
+    // });
+
+    // for (let i = 0; i < this.orders.length; i++) {
+    //   console.log('this.orders["1"]', this.orders[i]);
+    //   this.orders[i].quantity = '';
+    //   this.orders[i].price = '';
+    // }
+
+    // this.orders = this.orders.map((item, i) => {
+    //   item.quantity = '';
+    //   item.price = '';
+    //   return item;
+    // });
+
+    // this.orders[0].price = '';
+    // this.orders[0].quantity = '';
+
+    // this.orders[1].price = '';
+    // this.orders[1].quantity = '';
+
+    // this.orders[2].price = '';
+    // this.orders[2].quantity = '';
   }
 }
